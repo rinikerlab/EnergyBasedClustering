@@ -36,13 +36,25 @@ If you want to change the number of clusters, simply run
 ```sh
 ebc.extract_clusters(n_clusters=n_clusters)
 ```
+extracted clusters can be inspected with
+
+```sh
+ebc.show()
+```
+Finally, 
+```sh
+ebc.hierarchical()
+```
+will apply the free-energy hierarchical clustering, showing how the minima of your PES merge.
 
 # Parameters
 
 The most important parameters you have to set:
 
 n_clusters [int]: Self-explanatory, will control the number of clusters you obtain, i.e. the number of eigenvectors used.
+
 temperature [float]: Controls the relative depth of energy minima. It might be worth to scan a range of temperatures. A good starting point is T=std(energies).
+
 boxsize [float] or [array(floats)]: Can be used to introduce periodic boundary conditions.
 
 All other parameters are estimated. The size of the proto clusters can play an important role, if you think the proto clusters are too fine/coarse you can either control it directly using
