@@ -1,7 +1,7 @@
 # Energy Based Clustering
 
 Implementation of the clustering algorithm described in: 
-Energy-Based Clustering: Clustering Data with Known Likelihood Functions
+"Energy Based Clustering: Fast and Robust Clustering of Data with Known Likelihood Functions"
 
 # Usage
 

@@ -14,7 +14,7 @@ from Hierarchical import *
 class EBC:
     def __init__(self, n_clusters=None, temperature=1, percentile=1, proto_radius=None, knn=8, knn_distance=None, gamma=1.25,
                  n_samples=500, pca_steps=8, pca_threshold=0.8, pca_components=None, verbose=True, mode='knn', mode_energy='min', 
-                 use_sparse=False, boxsize=None):
+                 use_sparse=True, boxsize=None):
         self._n_clusters = n_clusters
         self._temperature = temperature
         self._percentile = percentile
@@ -295,7 +295,7 @@ class EBC:
             for idk, cluster_key in enumerate(self._cluster_ids):
                 coords = self._proto_2D[self.get_cluster_members(cluster_key)]
                 plt.scatter(coords[:, 0], coords[:, 1], color=self.cluster_colormap[idk], s=s_big, alpha=alpha_proto)
-        self._plot_clean_up(plt, savename=savename)
+        return self._plot_clean_up(plt, savename=savename)
         
     def _prepare_colormap(self, colormap=None):
         if colormap is None:
@@ -307,6 +307,7 @@ class EBC:
                 colormap = np.array(plt.cm.cividis.colors)[np.linspace(0, 255, self._n_clusters, dtype=np.int32)]
         else:
             colormap = np.array(colormap.colors)[np.linspace(0, 255, self._n_clusters, dtype=np.int32)]
+        self.colormap = colormap
         self.cluster_colormap = {cluster_id: color for cluster_id, color in enumerate(colormap)}        
         
     def _plot_clean_up(self, plt, savename=None):
@@ -315,7 +316,7 @@ class EBC:
         plt.axis('off')
         if savename is not None:
             plt.savefig(savename, bbox_inches='tight')
-        plt.show()   
+        return plt.gcf() 
         
     def plot_graph(self, threshold=5e-3, tau=10, scaling=5, show_labels=False, save=False, savename=None, dpi=200, colormap=None):
         if not self._visualisation_ready:
@@ -336,7 +337,7 @@ class EBC:
         #plt.scatter(coords[:, 0], coords[:, 1], c=population * 100, zorder=2, cmap=plt.cm.plasma, edgecolor='black', s=250)
         plt.scatter(self._states_2D[:, 0], self._states_2D[:, 1], c=-self.energies, s=0.5, cmap=plt.cm.plasma, zorder=-10, alpha=0.6)
         plt.scatter(self._proto_2D[:, 0], self._proto_2D[:, 1], c=self.pi * 100, s=125, cmap=plt.cm.plasma, zorder=100, alpha=0.8)
-        plt.colorbar(label='Population [%]')
+        plt.colorbar(label='Population [\%]')
         plt.box(False)
         ax = plt.gca()    
         pos = {key: coords[key] for key in g.nodes}
