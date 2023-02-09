@@ -3,14 +3,25 @@
 Implementation of the clustering algorithm described in: 
 "Energy Based Clustering: Fast and Robust Clustering of Data with Known Likelihood Functions"
 
-# Usage
+# Examples
 
-Given an array of coordinates [NxD] and energies [N]:
+Some examples can be found in the notebooks. 
+
+# Inputs
+
+coordinates [NxD(float)]: NxD array of coordinates.
+energies [N(float)]: N array of energies or negative log-likelihoods.
+temperature [float]: Hyperparameter controlling 'smoothness' of potential energy surface/relative weights. temperature=np.std(energies) is a good starting point.
+n_clusters [int]: Number of clusters you want to extract based on the spectrum. Only required if you want to extract cluster labels. Can also be set after an initial visual inspection of the connectivity with plot_graph() (see below).
+
+Additional details and examples can be found below or in source/examples.
+
+# Usage
 
 ```sh
 from EBC import EBC
 ebc = EBC(n_clusters=n) 
-ebc.fit(coordinates, energies)
+labels = ebc.fit_transform(coordinates, energies)
 ebc.show()
 ```
 you can obtain the labels to the clusters ('proto clusters') as
@@ -55,7 +66,7 @@ n_clusters [int]: Self-explanatory, will control the number of clusters you obta
 
 temperature [float]: Controls the relative depth of energy minima. It might be worth to scan a range of temperatures. A good starting point is T=std(energies).
 
-boxsize [float] or [array(floats)]: Can be used to introduce periodic boundary conditions.
+boxsize [float] or [array(floats)]: Can be used to introduce periodic boundary conditions. Please note that only intervals [0, x) are supported.
 
 All other parameters are estimated. The size of the proto clusters can play an important role, if you think the proto clusters are too fine/coarse you can either control it directly using
 
@@ -67,12 +78,13 @@ percentile [float] (0-100): Will change the percentile which is used to estimate
 
 ## Performance
 
-The performance depends to a large degree on the number of proto clusters. We found that for most datasets, 1K is a good starting point. For ~1K it should not take longer than a second. If you are not happy with the speed, you can experiment with the following parameters:
+The performance depends largely on the number of proto clusters. We found that for most datasets, 1K is a good starting point. For ~1K it should not take longer than a second. If you are not happy with the speed, you can experiment with the following parameters:
 
 percentile: A larger percentile will results in larger radii which will result in a smaller number of proto clusters
 proto_radius: Similarly, a larger proto radius will decrease the number of proto clusters.
 
-An implementation using sparse matrices is provided. This can provide huge speed ups if the number of proto clusters is larger than a few hundred. However, depending on your dataset, i.e. if there are disconnected components, we have observed numerical instabilities. 
+An implementation using sparse matrices is provided. This can provide huge speed ups if the number of proto clusters is larger than a few hundred. However, depending on your dataset, i.e. if there are disconnected components, the sparse implementation can result in numerical instabilities.
+
 You can try it out with
 
 use_sparse [bool]: Uses the sparse matrix implementation.
@@ -87,10 +99,6 @@ Finally, you can also consider including a distance based weight by setting
 
 mode [str] ('knn'|'knnr'): 'knn' assume that the distance based contribution is negligible within a small neighbourhood. 'knnr' introduce a distance based weight. Decay of the distance based weighting function (Gaussian) can be controlled with gamma.
 
-
-# Examples
-
-Some examples can be found in the notebooks. 
 
 # Requirements
 
