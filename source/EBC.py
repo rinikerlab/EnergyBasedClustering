@@ -219,15 +219,15 @@ class EBC:
     
     @property
     def labels(self):
-        return self._proto_labels.copy()
-    
-    @property
-    def proto_labels(self):
-        return self._proto_labels.copy()
+        return self._state_labels.copy()
     
     @property
     def state_labels(self):
         return self._state_labels.copy()
+    
+    @property
+    def proto_labels(self):
+        return self._proto_labels.copy()
     
     @property
     def distance_matrix(self):

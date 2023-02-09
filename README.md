@@ -3,15 +3,14 @@
 Implementation of the clustering algorithm described in: 
 "Energy Based Clustering: Fast and Robust Clustering of Data with Known Likelihood Functions"
 
-# Examples
-
-Some examples can be found in the notebooks. 
-
 # Inputs
 
 coordinates [NxD(float)]: NxD array of coordinates.
+
 energies [N(float)]: N array of energies or negative log-likelihoods.
+
 temperature [float]: Hyperparameter controlling 'smoothness' of potential energy surface/relative weights. temperature=np.std(energies) is a good starting point.
+
 n_clusters [int]: Number of clusters you want to extract based on the spectrum. Only required if you want to extract cluster labels. Can also be set after an initial visual inspection of the connectivity with plot_graph() (see below).
 
 Additional details and examples can be found below or in source/examples.
@@ -33,8 +32,10 @@ or
 
 ```sh
 ebc.state_labels
+and
+ebc.labels
 ```
-if you want to know the label of each state (i.e. same number as coordinates).
+if you want to know the label of each input sample (i.e. same number as coordinates).
 
 You can also look at the connectivity between states
 ```sh
