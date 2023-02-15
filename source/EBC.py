@@ -1,4 +1,3 @@
-#from sklearn.neighbors import KDTree
 from sklearn.decomposition import PCA
 from scipy.spatial import KDTree as KDTreeSP
 from scipy.spatial.distance import pdist
@@ -11,10 +10,25 @@ import scipy.sparse as snp
 
 from Hierarchical import *
 
+
 class EBC:
-    def __init__(self, n_clusters=None, temperature=1, percentile=1, proto_radius=None, knn=8, knn_distance=None, gamma=1.25,
-                 n_samples=500, pca_steps=8, pca_threshold=0.8, pca_components=None, verbose=True, mode='knn', mode_energy='min', 
-                 use_sparse=True, boxsize=None):
+    def __init__(self, 
+                 n_clusters=None, 
+                 temperature=1, 
+                 percentile=1, 
+                 proto_radius=None, 
+                 knn=8, 
+                 knn_distance=None, 
+                 gamma=1.25,
+                 n_samples=500, 
+                 pca_steps=8, 
+                 pca_threshold=0.8, 
+                 pca_components=None, 
+                 verbose=True, 
+                 mode='knn', 
+                 mode_energy='min', 
+                 use_sparse=True, 
+                 boxsize=None):
         self._n_clusters = n_clusters
         self._temperature = temperature
         self._percentile = percentile
@@ -30,9 +44,9 @@ class EBC:
         self._mode = mode        
         self._mode_energy = mode_energy
         self._use_sparse = use_sparse
+        self._boxsize = boxsize
         self._visualisation_ready = False
         self._pi = None
-        self._boxsize = boxsize
         
     def _from_array(self, states, energies, stride=1, start=0, end=None):        
         states, energies = states[start:end][::stride], energies.squeeze()[start:end][::stride]
