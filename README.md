@@ -4,10 +4,13 @@ Implementation of the clustering algorithm described in:
 
 "Energy Based Clustering: Fast and Robust Clustering of Data with Known Likelihood Functions"
 
+![Graph Clustering](source/examples/cluster_density.png)
+
 ## Contents
 
 - [Energy Based Clustering](#energy-based-clustering)
   - [Contents](#contents)
+  - [Installation](#installation)
   - [Inputs](#inputs)
   - [Usage](#usage)
   - [Parameters](#parameters)
@@ -15,6 +18,14 @@ Implementation of the clustering algorithm described in:
   - [Requirements](#requirements)
   - [Citation](#citation)
   - [License](#license)
+
+## Installation
+
+```sh
+git clone https://github.com/MOSNPDEV/EnergyBasedClustering.git
+cd EnergyBasedClustering-main
+pip install .
+```
 
 ## Inputs
 
