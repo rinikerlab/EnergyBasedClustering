@@ -215,7 +215,7 @@ class EBC:
     def _check_gap(self):
         if self.w.size > 1:
             gap = self.w[0] - self.w[1]
-            if gap < 1e-5:
+            if gap < 1e-5 and self._verbose:
                 print(f'The gap between the two largest eigenvalues is {gap}.')
                 print('Your graph might consist of multiple disconnected components which can result in unexpected behaviour.')
                 print('Consider increasing the number of knn and/or the temperature.')
@@ -366,7 +366,7 @@ class EBC:
             plt.savefig(savename, bbox_inches='tight')
             
     def write_clusters(self, rdkit_mol):
-        from Utilities import write_xyz
+        from Helpers import write_xyz
         conformations = np.array([x.GetPositions() for x in rdkit_mol.GetConformers()])
         symbols = [e.GetSymbol() for e in rdkit_mol.GetAtoms()]
         for idk, cluster_key in enumerate(self._cluster_ids):

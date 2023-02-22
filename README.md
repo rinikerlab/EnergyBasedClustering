@@ -4,7 +4,7 @@ Implementation of the clustering algorithm described in:
 
 "Energy Based Clustering: Fast and Robust Clustering of Data with Known Likelihood Functions"
 
-![Graph Clustering](source/examples/cluster_density.png)
+![Graph Clustering](source/examples/graph_large.png)
 
 ## Contents
 
