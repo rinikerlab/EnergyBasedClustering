@@ -2,7 +2,7 @@
 
 Implementation of the clustering algorithm described in:
 
-"[Energy Based Clustering: Fast and Robust Clustering of Data with Known Likelihood Functions](https://arxiv.org/abs/2303.01104)".
+[Energy Based Clustering: Fast and Robust Clustering of Data with Known Likelihood Functions](https://arxiv.org/abs/2303.01104)
 
 ![Graph Clustering](source/examples/data/graph_large.png)
 
