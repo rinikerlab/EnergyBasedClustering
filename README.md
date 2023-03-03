@@ -2,7 +2,7 @@
 
 Implementation of the clustering algorithm described in:
 
-"Energy Based Clustering: Fast and Robust Clustering of Data with Known Likelihood Functions"
+"[Energy Based Clustering: Fast and Robust Clustering of Data with Known Likelihood Functions](https://arxiv.org/abs/2303.01104)".
 
 ![Graph Clustering](source/examples/data/graph_large.png)
 
@@ -148,7 +148,17 @@ Exact versions shouldn't matter too much except for Scipy which should use a ver
 
 ## Citation
 
-Please cite the corresponding publication:
+Please cite the corresponding publication ([https://arxiv.org/abs/2303.01104](https://arxiv.org/abs/2303.01104)):
+
+```
+@article{EnergyBasedClustering,
+  author = {Thürlemann, Moritz and Riniker, Sereina},  
+  title = {Energy-Based Clustering: Fast and Robust Clustering of Data with Known Likelihood Functions},  
+  publisher = {arXiv},  
+  year = {2023},
+}
+```
+
 
 ## License
 
