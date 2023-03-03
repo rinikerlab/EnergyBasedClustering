@@ -22,9 +22,7 @@ Implementation of the clustering algorithm described in:
 ## Installation
 
 ```sh
-git clone https://github.com/MOSNPDEV/EnergyBasedClustering.git
-cd EnergyBasedClustering-main
-pip install .
+pip install git+https://github.com/rinikerlab/EnergyBasedClustering.git
 ```
 
 ## Inputs
