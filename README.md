@@ -42,7 +42,7 @@ Additional details and examples can be found below or in source/examples.
 ## Usage
 
 ```sh
-from EBC import EBC
+from ebc.Clustering import EBC
 ebc = EBC(n_clusters=n) 
 labels = ebc.fit_transform(coordinates, energies)
 ebc.show()
@@ -137,18 +137,30 @@ mode [str] ('knn'|'knnr'): 'knn' assume that the distance based contribution is 
 
 The module was tested on the following versions (see environment.yml):
 
-- Python3 (3.9)
-- Numpy (1.19.5)
-- Matplotlib (3.5.3)
-- Scipy (1.9.0)
-- Sklearn (1.0.1)
-- Networkx (2.8.8)
+- Python3 (3.10.12)
+- Numpy (1.25.1)
+- Matplotlib (3.7.2)
+- Scipy (1.11.1)
+- Sklearn (1.3.0)
+- Networkx (3.1)
 
 Exact versions shouldn't matter too much except for Scipy which should use a version with the new sparse array API (1.8+).
 
 ## Citation
 
 Please cite the corresponding publication:
+```sh
+@article{EnergyBasedClustering,
+    author = {Thürlemann, Moritz and Riniker, Sereina},
+    title = "{Energy-based clustering: Fast and robust clustering of data with known likelihood functions}",
+    journal = {The Journal of Chemical Physics},
+    volume = {159},
+    number = {2},
+    pages = {024105},
+    year = {2023},
+}
+```
+
 
 ## License
 

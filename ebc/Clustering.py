@@ -8,7 +8,7 @@ import networkx as nx
 import numpy as np
 import scipy.sparse as snp
 
-from Hierarchical import *
+from .Hierarchical import get_fes, build_graph, get_components, get_edges, prepare_tree_structure, prepare_positions, plot_tree
 
 
 class EBC:
@@ -333,7 +333,7 @@ class EBC:
         coords = self._states_2D[self._proto_centers]
         flow = np.linalg.matrix_power(self.diffusion_matrix, tau)
         flow[flow < threshold] = 0
-        g = nx.from_numpy_matrix(flow)
+        g = nx.from_numpy_array(flow)
         g.remove_edges_from(nx.selfloop_edges(g))
         population = self.pi
         for edge in g.edges:
