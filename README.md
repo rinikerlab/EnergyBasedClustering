@@ -148,8 +148,9 @@ Exact versions shouldn't matter too much except for Scipy which should use a ver
 
 ## Citation
 
-Please cite the corresponding publication:
-```sh
+Please cite the corresponding publication ([JCP Publication](https://pubs.aip.org/aip/jcp/article/159/2/024105/2901613/Energy-based-clustering-Fast-and-robust-clustering)):
+
+```
 @article{EnergyBasedClustering,
     author = {Thürlemann, Moritz and Riniker, Sereina},
     title = "{Energy-based clustering: Fast and robust clustering of data with known likelihood functions}",
